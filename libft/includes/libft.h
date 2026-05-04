@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:03:31 by taebkim           #+#    #+#             */
-/*   Updated: 2025/01/29 10:43:52 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/04 22:10:26 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ size_t ft_strlcat(char *dst, const char *src, size_t size);
 char *ft_strchr(const char *s, int c);
 char *ft_strrchr(const char *s, int c);
 int ft_strncmp(const char *s1, const char *s2, size_t n);
+int	ft_strcmp(const char *s1, const char *s2);
 char *ft_strnstr(const char *big, const char *little,
 				 size_t len);
 char *ft_strdup(const char *s);

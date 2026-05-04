@@ -1,0 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/04 21:35:41 by taebkim           #+#    #+#             */
+/*   Updated: 2026/05/04 22:45:13 by taebkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <fcntl.h>
+#include "ft_printf.h"
+
+typedef enum e_line_type {
+    // for describe number_of_ants
+    LINE_NUMBER,
+    
+    // Type for Classifier
+    LINE_COMMAND_START,
+    LINE_ROOM,
+    
+    LINE_COMMAND_END,
+    LINE_LINK,
+    
+    // # is Comment
+    LINE_COMMENT,
+
+    // Type for Error
+    LINE_EMPTY,
+    LINE_COMMAND_UNKNOWN,    
+    LINE_INVALID
+} t_line_type;
+
+typedef struct s_link {
+    struct s_room *to;
+    struct s_link *next;
+} t_link;
+
+typedef struct s_room {
+    char *name;
+    int x;
+    int y;
+    int is_start;
+    int is_end;
+    t_link *links;
+    struct s_room *next;
+} t_room;
+
+typedef struct s_farm {
+    int number_of_ants;
+    t_room *rooms;
+    int room_count;
+    t_room *start;
+    t_room *end;
+} t_farm;
+
+t_line_type classify_line(const char *line);
+
+int is_only_digits(const char *s);
+int has_dash(const char *s);
+int count_spaces(const char *s);

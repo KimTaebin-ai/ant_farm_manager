@@ -6,7 +6,7 @@
 #    By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/24 02:52:49 by taebkim           #+#    #+#              #
-#    Updated: 2026/05/04 19:29:16 by taebkim          ###   ########.fr        #
+#    Updated: 2026/05/04 22:23:45 by taebkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = lem-in
 
 INCS_DIR = ./includes
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCS_DIR) -Ilibft/$(INCS_DIR)
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I$(INCS_DIR) -Ilibft/$(INCS_DIR) -g
 RM = rm -f
 
 LIBFT_DIR = ./libft
@@ -26,6 +26,7 @@ OBJ_DIR = obj
 
 SRCS = $(addprefix src/, \
 	main.c \
+	$(addprefix parsing/, parser.c parser_utils.c)\
 )
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
