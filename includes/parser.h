@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 21:35:41 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 16:34:09 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 19:06:50 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "struct.h"
-
-// debug
-void print_room_list_for_debug(t_farm *farm);
-void print_room_link_for_debug(t_farm *farm);
 
 void data_parse(t_farm *farm);
 

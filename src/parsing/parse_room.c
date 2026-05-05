@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 12:23:11 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 16:41:54 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 20:08:27 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,22 @@ t_room *create_room(const char *name, int x, int y) {
 
     if (!room)
         return NULL;
-    room->name = ft_strdup(name);
+    *room = (t_room){
+        .name = ft_strdup(name), 
+        .x = x, .y = y,
+        .is_start = 0, .is_end = 0,
+        .links = NULL,
+        .next = NULL,
+        .visited = 0,
+        .distance = 0,
+        .parent = NULL,
+        .ant_id = 0
+    };
+    
     if (!room->name) {
         free(room);
         return NULL;
     }
-    room->x = x;
-    room->y = y;
-    room->is_start = 0;
-    room->is_end = 0;
-    room->links = NULL;
-    room->next = NULL;
     return room;
 }
 

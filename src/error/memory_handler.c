@@ -6,13 +6,15 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 15:51:46 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 16:33:47 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 19:47:31 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "algorithms.h"
 #include "error_handler.h"
 #include "struct.h"
+#include "debug.h"
 
 void free_tokens(char **tokens) {
     int i;
@@ -60,6 +62,18 @@ void free_farm(t_farm *farm) {
         return ;
     free_rooms(farm->rooms);
     free(farm);
+}
+
+void free_path(t_path *path) {
+    if (!path)
+        return ;
+    free(path->rooms);
+    free(path);
+}
+
+void free_ants(t_ant *ants) {
+    if (ants)
+        free(ants);
 }
 
 void error_exit(t_farm *farm) {

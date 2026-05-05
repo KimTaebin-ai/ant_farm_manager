@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 11:54:52 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 15:02:05 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 19:54:16 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ typedef struct s_room {
     int is_end;
     t_link *links;
     struct s_room *next;
+
+    // for BFS
+    int visited;
+    int distance;
+    struct s_room *parent;
+    int ant_id;
 } t_room;
 
 typedef struct s_farm {
@@ -62,6 +68,5 @@ typedef struct s_farm {
     t_room *end;
     t_next_room_role next_room_role;
 } t_farm;
-
 
 #endif

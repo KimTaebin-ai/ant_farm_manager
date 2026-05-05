@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   farm.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 11:53:04 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 20:16:54 by taebkim          ###   ########.fr       */
+/*   Created: 2026/05/05 17:39:57 by taebkim           #+#    #+#             */
+/*   Updated: 2026/05/05 19:03:37 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init.h"
 #include <stdlib.h>
-#include <stdio.h>
+#include "algorithms.h"
+#include "ft_printf.h"
 
-t_farm *init_farm() {
-    t_farm *farm;
+void reset_visited(t_farm *farm) {
+    t_room *current = farm->rooms;
 
-    farm = malloc(sizeof(t_farm));
-    if (!farm)
-        return NULL;
-    *farm = (t_farm){
-        .number_of_ants = 0,
-        .rooms = NULL, .room_count = 0,
-        .start = NULL, .end = NULL,
-        .next_room_role = ROLE_NORMAL
-    };
-    return farm;
+    while (current) {
+        current->visited = 0;
+        current->distance = 0;
+        current->parent = NULL;
+        current = current->next;
+    }
 }

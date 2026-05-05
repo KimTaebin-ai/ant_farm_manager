@@ -6,15 +6,17 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 21:05:20 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 16:29:54 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 19:19:01 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "struct.h"
 #include "error_handler.h"
+#include "debug.h"
 #include "get_next_line.h"
 #include "libft.h"
+#include "ft_printf.h"
 
 t_line_type classify_line(const char *line) {
     if (line[0] == '\n' || line[0] == '\0' || !line[0])
@@ -72,6 +74,12 @@ void main_process_by_type(t_farm *farm, const char *line, t_line_type type) {
         case LINE_LINK:
             parse_link_line(line, farm);
             break;
+        case LINE_COMMAND_UNKNOWN:
+            error_exit(farm);
+            break;
+        case LINE_INVALID:
+            error_exit(farm);
+            break;
         default:
             break;
     }
@@ -85,12 +93,13 @@ void data_parse(t_farm *farm) {
         if (len > 0 && line[len - 1] == '\n')
             line[len - 1] = '\0';
         t_line_type type = classify_line(line);
-        // ft_printf("[%d] %s", type, line);
 
-        if (type == LINE_EMPTY || type == LINE_INVALID) {
+        if (type == LINE_EMPTY || type == LINE_COMMENT) {
             free(line);
-            break;  // 입력 종료
+            continue;
         }
+
+        ft_printf("%s\n", line);
         
         main_process_by_type(farm, line, type);
 
@@ -101,6 +110,6 @@ void data_parse(t_farm *farm) {
         error_exit(farm);
 
     // 디버깅용 출력
-    print_room_list_for_debug(farm);
-    print_room_link_for_debug(farm);
+    // print_room_list_for_debug(farm);
+    // print_room_link_for_debug(farm);
 }

@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 14:21:10 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 16:33:27 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 20:13:37 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int add_link(t_room *from, t_room *to) {
     if (!link)
         return 0;
 
-    link->to = to;
-    link->next = from->links;
+    *link = (t_link) {
+        .to = to, .next = from->links,
+    };
     from->links = link;
     return 1;
 }

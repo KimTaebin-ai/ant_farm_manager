@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 18:18:58 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 16:30:03 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 19:45:56 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 #include "parser.h"
 #include "init.h"
 #include "error_handler.h"
+#include "algorithms.h"
+#include "debug.h"
 
 int main() {
     /*  
@@ -58,16 +60,46 @@ int main() {
         ├─ 메모리 누수 체크 (valgrind)
         └─ 엣지 케이스 처리
     */
+
+    /*
+        L1-2
+        L1-3 L2-2
+        L1-1 L2-3 L3-2
+        L2-1 L3-3
+        L3-1
+
+        턴 1: L1-2              ← 1번 개미가 방 2로
+        턴 2: L1-3  L2-2        ← 1번이 3으로, 2번이 2로
+        턴 3: L1-1  L2-3  L3-2  ← 1번이 1(end)로, 2번이 3, 3번이 2
+        턴 4: L2-1  L3-3        ← 1번은 도착했으니 빠짐
+        턴 5: L3-1
+    */
    
     t_farm *farm;
+    t_path  *path;
 
     farm = init_farm();
 
     if (!farm)
         return 1;
     data_parse(farm);
+    // 디버깅용 출력
+    // print_queue_for_debug(farm);
 
+    if (!bfs(farm)) {
+        free_farm(farm);
+        return 1;
+    }
+
+    path = extract_path(farm);
+    if (!path) {
+        free_farm(farm);
+        return 1;
+    }
+
+    run_ant_simulation(farm, path);
+
+    free_path(path);
     free_farm(farm);
-
     return 0;
 }
