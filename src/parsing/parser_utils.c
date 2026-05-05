@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 21:44:51 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 15:14:27 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 15:46:29 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 #include "libft.h"
 
 // TODO 관련 에러 처리 전체 필요
+
+void free_tokens(char **tokens) {
+    int i;
+    if (!tokens)
+        return ;
+    i = 0;
+    while (tokens[i]) {
+        free(tokens[i]);
+        i++;
+    }
+    free(tokens);
+}
 
 int is_only_digits(const char *s) {
     if (s == NULL || *s == '\0' || *s == '\n')

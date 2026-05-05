@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 18:18:58 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 15:06:53 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 16:00:28 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include "struct.h"
 #include "parser.h"
 #include "init.h"
+#include "error.h"
 
 int main() {
     /*  
@@ -66,7 +67,7 @@ int main() {
         return 1;
     data_parse(farm);
 
-    free(farm); // TODO free struct 함수 개발 필요
+    free_farm(farm); // TODO free struct 함수 개발 필요
 
     return 0;
 }

@@ -6,12 +6,13 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 21:05:20 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 15:12:49 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 15:55:33 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "struct.h"
+#include "error.h"
 #include "get_next_line.h"
 #include "libft.h"
 
@@ -43,19 +44,19 @@ void main_process_by_type(t_farm *farm, const char *line, t_line_type type) {
             break;
         case LINE_COMMAND_START:
             if (farm->next_room_role != ROLE_NORMAL || farm->start)
-                exit(1); // TODO error 처리 필요
+                error_exit(farm);
             farm->next_room_role = ROLE_START;
             break;
         case LINE_COMMAND_END:
             if (farm->next_room_role != ROLE_NORMAL || farm->end)
-                exit(1); // TODO error 처리 필요
+                error_exit(farm);
             farm->next_room_role = ROLE_END;
             break;
         case LINE_ROOM: {
             t_room *room = parse_add_room(line, farm);
             
             if (!room)
-                exit(1);
+                error_exit(farm);
             
             if (farm->next_room_role == ROLE_START) {
                 room->is_start = 1;
