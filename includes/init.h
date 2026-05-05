@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 18:06:14 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/04 21:19:34 by taebkim          ###   ########.fr       */
+/*   Created: 2026/05/05 11:53:19 by taebkim           #+#    #+#             */
+/*   Updated: 2026/05/05 12:12:34 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <string.h>
-// #include <stdio.h>
-#include "libft.h"
-#include "ft_printf.h"
-#include "get_next_line.h"
+#ifndef INIT_H
+# define INIT_H
 
-void data_parse();
+#include "struct.h"
+
+t_farm *init_farm();
+
+#endif

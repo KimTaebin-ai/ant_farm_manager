@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 18:18:58 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/04 22:40:37 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 15:06:53 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,17 @@
  * exit
  */
 
-#include "main.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <string.h>
+#include "struct.h"
+#include "parser.h"
+#include "init.h"
 
 int main() {
-    /**
-     *  Phase 1: 입력 파싱
+    /*  
+        Phase 1: 입력 파싱
         ├─ get_next_line으로 라인 단위 읽기
         ├─ 방, 링크 파싱
         ├─ 자료구조에 저장
@@ -50,9 +56,17 @@ int main() {
         ├─ 4000개 방 시간 내 처리
         ├─ 메모리 누수 체크 (valgrind)
         └─ 엣지 케이스 처리
-     */
-    data_parse();
+    */
+   
+    t_farm *farm;
 
+    farm = init_farm();
+
+    if (!farm)
+        return 1;
+    data_parse(farm);
+
+    free(farm); // TODO free struct 함수 개발 필요
 
     return 0;
 }

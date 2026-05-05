@@ -6,7 +6,7 @@
 #    By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/24 02:52:49 by taebkim           #+#    #+#              #
-#    Updated: 2026/05/04 22:23:45 by taebkim          ###   ########.fr        #
+#    Updated: 2026/05/05 14:37:18 by taebkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ OBJ_DIR = obj
 
 SRCS = $(addprefix src/, \
 	main.c \
-	$(addprefix parsing/, parser.c parser_utils.c)\
+	$(addprefix parsing/, parser.c parser_utils.c parse_ant.c parse_room.c parse_link.c)\
+	$(addprefix init/, init.c)\
 )
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))

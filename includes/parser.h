@@ -6,58 +6,36 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 21:35:41 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/04 22:45:13 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 14:48:31 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PARSER_H
+# define PARSER_H
+
 #include <fcntl.h>
-#include "ft_printf.h"
+#include "struct.h"
 
-typedef enum e_line_type {
-    // for describe number_of_ants
-    LINE_NUMBER,
-    
-    // Type for Classifier
-    LINE_COMMAND_START,
-    LINE_ROOM,
-    
-    LINE_COMMAND_END,
-    LINE_LINK,
-    
-    // # is Comment
-    LINE_COMMENT,
+// debug
+void print_room_list_for_debug(t_farm *farm);
+void print_room_link_for_debug(t_farm *farm);
 
-    // Type for Error
-    LINE_EMPTY,
-    LINE_COMMAND_UNKNOWN,    
-    LINE_INVALID
-} t_line_type;
+void data_parse(t_farm *farm);
 
-typedef struct s_link {
-    struct s_room *to;
-    struct s_link *next;
-} t_link;
-
-typedef struct s_room {
-    char *name;
-    int x;
-    int y;
-    int is_start;
-    int is_end;
-    t_link *links;
-    struct s_room *next;
-} t_room;
-
-typedef struct s_farm {
-    int number_of_ants;
-    t_room *rooms;
-    int room_count;
-    t_room *start;
-    t_room *end;
-} t_farm;
-
-t_line_type classify_line(const char *line);
-
+// util functions for parsing
 int is_only_digits(const char *s);
 int has_dash(const char *s);
 int count_spaces(const char *s);
+int count_tokens(char **tokens);
+
+// function for ant counting
+void parse_number_of_ants(const char *data, t_farm *farm);
+
+// function for add rooms info
+t_room *parse_add_room(const char *data, t_farm *farm);
+t_room *create_room(const char *name, int x, int y);
+
+// function for add relation of room
+void parse_link_line(const char *data, t_farm *farm);
+
+#endif
