@@ -6,25 +6,29 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 21:44:51 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 15:46:29 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 16:33:41 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "libft.h"
 
-// TODO 관련 에러 처리 전체 필요
+t_room *find_room_by_name(t_farm *farm, const char *name) {
+    t_room *current;
 
-void free_tokens(char **tokens) {
-    int i;
-    if (!tokens)
-        return ;
-    i = 0;
-    while (tokens[i]) {
-        free(tokens[i]);
-        i++;
+    if (!farm || !name)
+        return NULL;
+    
+    current = farm->rooms;
+    while (current != NULL) {
+        // 방 이름이 일치하면 해당 방의 포인터를 반환
+        if (ft_strcmp(current->name, name) == 0) {
+            return current;
+        }
+        current = current->next;
     }
-    free(tokens);
+    
+    return NULL;
 }
 
 int is_only_digits(const char *s) {

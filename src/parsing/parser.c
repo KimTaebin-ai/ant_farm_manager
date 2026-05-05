@@ -6,13 +6,13 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 21:05:20 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 15:55:33 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 16:29:54 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "struct.h"
-#include "error.h"
+#include "error_handler.h"
 #include "get_next_line.h"
 #include "libft.h"
 
@@ -77,8 +77,6 @@ void main_process_by_type(t_farm *farm, const char *line, t_line_type type) {
     }
 }
 
-#include "ft_printf.h"
-
 void data_parse(t_farm *farm) {
     char    *line;
     // TODO stdin 입력하지 않았을 때의 예외처리 추가
@@ -98,6 +96,9 @@ void data_parse(t_farm *farm) {
 
         free(line); // GNL 할당한 메모리 해제 필수
     }
+
+    if (!validate_farm(farm))
+        error_exit(farm);
 
     // 디버깅용 출력
     print_room_list_for_debug(farm);

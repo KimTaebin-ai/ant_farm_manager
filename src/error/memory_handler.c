@@ -6,13 +6,25 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 15:51:46 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 16:01:11 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 16:33:47 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "error.h"
+#include "error_handler.h"
 #include "struct.h"
+
+void free_tokens(char **tokens) {
+    int i;
+    if (!tokens)
+        return ;
+    i = 0;
+    while (tokens[i]) {
+        free(tokens[i]);
+        i++;
+    }
+    free(tokens);
+}
 
 void free_links(t_link *links)
 {

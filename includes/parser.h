@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 21:35:41 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 15:47:09 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 16:34:09 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void print_room_link_for_debug(t_farm *farm);
 void data_parse(t_farm *farm);
 
 // util functions for parsing
-void free_tokens(char **tokens);
+t_room *find_room_by_name(t_farm *farm, const char *name);
 int is_only_digits(const char *s);
 int has_dash(const char *s);
 int count_spaces(const char *s);

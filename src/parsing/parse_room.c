@@ -6,10 +6,11 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 12:23:11 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 15:57:40 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 16:41:54 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error_handler.h"
 #include "parser.h"
 #include "libft.h"
 #include "ft_printf.h"
@@ -52,13 +53,15 @@ t_room *parse_add_room(const char *data, t_farm *farm) {
         free_tokens(tokens);
         return NULL;
     }
-        
-    // TODO 좌표 검증 (x, y 값이 유효한 int 값인지)
-    // if ()
-    // TODO 중복되는 이름이 나온 적 있었는지
-    // if ()
-
-    //     @params name, x, y
+    if (!ft_str_is_int(tokens[1]) || !ft_str_is_int(tokens[2])) {
+        free_tokens(tokens);
+        return NULL;
+    }
+    if (find_room_by_name(farm, tokens[0])) {
+        free_tokens(tokens);
+        return NULL;
+    }
+    
     room = create_room(tokens[0], ft_atoi(tokens[1]), ft_atoi(tokens[2]));
     free_tokens(tokens);
     if (!room)

@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   ft_str_is_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 15:52:43 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 16:02:22 by taebkim          ###   ########.fr       */
+/*   Created: 2026/05/05 16:39:05 by taebkim           #+#    #+#             */
+/*   Updated: 2026/05/05 16:39:30 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include "libft.h"
 
-#include <stdlib.h>
-#include "struct.h"
+int ft_str_is_int(const char *s) {
+    int i;
 
-void free_links(t_link *links);
-void free_rooms(t_room *rooms);
-void free_farm(t_farm *farm);
-void error_exit(t_farm *farm);
-
-#endif
+    if (!s || !s[0])
+        return (0);
+    i = 0;
+    if (s[0] == '-' || s[0] == '+')
+        i++;
+    if (!s[i])
+        return (0);
+    while (s[i]) {
+        if (!ft_isdigit(s[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}

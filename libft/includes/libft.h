@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:03:31 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/04 22:10:26 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/05 16:39:48 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int ft_isdigit(int c);
 int ft_isalnum(int c);
 int ft_isascii(int c);
 int ft_isprint(int c);
+
+int ft_str_is_int(const char *s);
 
 int ft_toupper(int c);
 int ft_tolower(int c);

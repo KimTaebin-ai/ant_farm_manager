@@ -6,7 +6,7 @@
 #    By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/24 02:52:49 by taebkim           #+#    #+#              #
-#    Updated: 2026/05/05 15:59:48 by taebkim          ###   ########.fr        #
+#    Updated: 2026/05/05 16:29:26 by taebkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS = $(addprefix src/, \
 	main.c \
 	$(addprefix parsing/, parser.c parser_utils.c parse_ant.c parse_room.c parse_link.c)\
 	$(addprefix init/, farm.c)\
-	$(addprefix error/, memory_handler.c)\
+	$(addprefix error/, memory_handler.c validate_handler.c)\
 )
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
