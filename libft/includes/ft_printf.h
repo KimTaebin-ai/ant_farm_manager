@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 02:06:55 by taebkim           #+#    #+#             */
-/*   Updated: 2025/01/29 10:14:32 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/06 17:42:16 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@
 
 int ft_printf(const char *bs, ...);
 
-int c_func(va_list ap);
-int s_func(va_list ap);
-int s_func(va_list ap);
-int p_func(va_list ap);
-int d_func(va_list ap);
-int u_func(va_list ap);
-int sx_func(va_list ap);
-int lx_func(va_list ap);
+int c_func(va_list *ap);
+int s_func(va_list *ap);
+int s_func(va_list *ap);
+int p_func(va_list *ap);
+int d_func(va_list *ap);
+int u_func(va_list *ap);
+int sx_func(va_list *ap);
+int lx_func(va_list *ap);
 
 char *ft_itoahex(unsigned long long n, const char *hex);
 

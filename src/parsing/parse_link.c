@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 14:21:10 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 20:13:37 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/06 09:32:27 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void parse_link_line(const char *data, t_farm *farm) {
 
     parts = ft_split(data, '-');
     
-    if (count_tokens(parts) != 2) {
+    if (!parts || count_tokens(parts) != 2) {
         free_tokens(parts);
         error_exit(farm);
     }
@@ -47,7 +47,6 @@ void parse_link_line(const char *data, t_farm *farm) {
     
     // 양방향 추가 (undirected graph)
     if (!add_link(room1, room2) || !add_link(room2, room1)) {
-        free_tokens(parts);
         error_exit(farm);
     }
 }

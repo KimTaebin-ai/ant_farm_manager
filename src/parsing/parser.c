@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 21:05:20 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 19:19:01 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/06 17:14:15 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void main_process_by_type(t_farm *farm, const char *line, t_line_type type) {
 void data_parse(t_farm *farm) {
     char    *line;
     // TODO stdin 입력하지 않았을 때의 예외처리 추가
-    while ((line = get_next_line(0)) != NULL) {
+    while ((line = get_next_line(STDIN_FILENO)) != NULL) {
         size_t len = ft_strlen(line);
         if (len > 0 && line[len - 1] == '\n')
             line[len - 1] = '\0';

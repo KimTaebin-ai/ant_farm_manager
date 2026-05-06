@@ -6,13 +6,13 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 02:06:47 by taebkim           #+#    #+#             */
-/*   Updated: 2024/10/18 20:31:24 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/06 17:42:25 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	check_type(const char *bs, va_list ap)
+int	check_type(const char *bs, va_list *ap)
 {
 	if (*bs == 'c')
 		return (c_func(ap));
@@ -37,7 +37,7 @@ int	check_type(const char *bs, va_list ap)
 		return (-1);
 }
 
-int	count_bs(const char *bs, va_list ap)
+int	count_bs(const char *bs, va_list *ap)
 {
 	int	i;
 	int	type_len;
@@ -73,6 +73,6 @@ int	ft_printf(const char *bs, ...)
 
 	bs_len = 0;
 	va_start(argptr, bs);
-	bs_len = count_bs(bs, argptr);
+	bs_len = count_bs(bs, &argptr);
 	return (bs_len);
 }

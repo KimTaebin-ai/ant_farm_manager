@@ -6,20 +6,20 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 02:00:08 by taebkim           #+#    #+#             */
-/*   Updated: 2024/10/15 15:00:23 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/06 17:43:06 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	x_func(va_list ap, const char *hex)
+int	x_func(va_list *ap, const char *hex)
 {
 	unsigned int	x;
 	char			*xitoa;
 	int				len;
 	int				write_result;
 
-	x = va_arg(ap, unsigned int);
+	x = va_arg(*ap, unsigned int);
 	xitoa = ft_itoahex(x, hex);
 	if (xitoa == NULL)
 		return (-1);
@@ -31,12 +31,12 @@ int	x_func(va_list ap, const char *hex)
 	return (len);
 }
 
-int	sx_func(va_list ap)
+int	sx_func(va_list *ap)
 {
 	return (x_func(ap, HEX_CHARS_LOWER));
 }
 
-int	lx_func(va_list ap)
+int	lx_func(va_list *ap)
 {
 	return (x_func(ap, HEX_CHARS_UPPER));
 }

@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 15:51:46 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 19:47:31 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/06 09:33:07 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void free_tokens(char **tokens) {
     i = 0;
     while (tokens[i]) {
         free(tokens[i]);
+        tokens[i] = NULL;
         i++;
     }
     free(tokens);
