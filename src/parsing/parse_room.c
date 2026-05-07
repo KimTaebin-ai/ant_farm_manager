@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 12:23:11 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 20:08:27 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/07 20:52:11 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ t_room *create_room(const char *name, int x, int y) {
         .visited = 0,
         .distance = 0,
         .parent = NULL,
-        .ant_id = 0
+        .ant_id = 0,
+        .in_flow = 0,
+        .parent_link = NULL
     };
     
     if (!room->name) {

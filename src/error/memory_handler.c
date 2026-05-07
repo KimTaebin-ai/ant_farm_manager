@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 15:51:46 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/06 09:33:07 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/07 20:58:48 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,23 @@ void free_farm(t_farm *farm) {
     if (!farm)
         return ;
     free_rooms(farm->rooms);
+    free_paths(farm->paths, farm->path_count);
     free(farm);
+}
+
+void free_paths(t_path **paths, int path_count) {
+    int i;
+    if (!paths)
+        return ;
+    i = 0;
+    while (i < path_count) {
+        if (paths[i]) {
+            free(paths[i]->rooms);
+            free(paths[i]);
+        }
+        i++;
+    }
+    free(paths);
 }
 
 void free_path(t_path *path) {

@@ -6,12 +6,14 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 11:54:52 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 19:54:16 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/07 21:09:34 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+typedef struct s_path t_path;
 
 typedef enum e_line_type {
     // for describe number_of_ants
@@ -42,6 +44,11 @@ typedef enum e_next_room_role {
 typedef struct s_link {
     struct s_room *to;
     struct s_link *next;
+
+    // Edmonds-Karp 
+    int capacity;
+    int flow;
+    struct s_link *reverse; // 역방향 edge
 } t_link;
 
 typedef struct s_room {
@@ -58,6 +65,10 @@ typedef struct s_room {
     int distance;
     struct s_room *parent;
     int ant_id;
+
+    // for Edmonds-Karp 
+    int in_flow;
+    t_link *parent_link;
 } t_room;
 
 typedef struct s_farm {
@@ -67,6 +78,10 @@ typedef struct s_farm {
     t_room *start;
     t_room *end;
     t_next_room_role next_room_role;
+
+    // for Edmonds-Karp 
+    t_path **paths;
+    int path_count;
 } t_farm;
 
 #endif

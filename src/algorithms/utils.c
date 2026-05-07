@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 17:39:57 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 19:03:37 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/07 20:56:14 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void reset_visited(t_farm *farm) {
         current->visited = 0;
         current->distance = 0;
         current->parent = NULL;
+        current->parent_link = NULL;
         current = current->next;
     }
 }

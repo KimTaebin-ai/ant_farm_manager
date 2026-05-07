@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 11:53:04 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 20:16:54 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/07 20:53:04 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_farm *init_farm() {
         .number_of_ants = 0,
         .rooms = NULL, .room_count = 0,
         .start = NULL, .end = NULL,
-        .next_room_role = ROLE_NORMAL
+        .next_room_role = ROLE_NORMAL,
+        .paths = NULL, .path_count = 0
     };
     return farm;
 }

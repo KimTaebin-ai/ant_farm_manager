@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 14:21:10 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/06 09:32:27 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/07 20:55:47 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,35 @@
 #include "error_handler.h"
 #include "libft.h"
 
-int add_link(t_room *from, t_room *to) {
-    t_link *link = malloc(sizeof(t_link));
-
-    if (!link)
+int add_link(t_room *room1, t_room *room2) {
+    t_link *forward;
+    t_link *backward;
+    
+    forward = malloc(sizeof(t_link));
+    if (!forward)
         return 0;
-
-    *link = (t_link) {
-        .to = to, .next = from->links,
+    backward = malloc(sizeof(t_link));
+    if (!backward) {
+        free(forward);
+        return 0;
+    }
+    *forward = (t_link){
+        .to = room2,
+        .next = room1->links,
+        .capacity = 1,
+        .flow = 0,
+        .reverse = backward
     };
-    from->links = link;
+    *backward = (t_link){
+        .to = room1,
+        .next = room2->links,
+        .capacity = 1,
+        .flow = 0,
+        .reverse = forward
+    };
+
+    room1->links = forward;
+    room2->links = backward;
     return 1;
 }
 
@@ -46,7 +65,7 @@ void parse_link_line(const char *data, t_farm *farm) {
         error_exit(farm);
     
     // 양방향 추가 (undirected graph)
-    if (!add_link(room1, room2) || !add_link(room2, room1)) {
+    if (!add_link(room1, room2)) {
         error_exit(farm);
     }
 }

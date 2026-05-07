@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 15:52:43 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 19:53:42 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/07 20:57:33 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void free_tokens(char **tokens);
 void free_links(t_link *links);
 void free_rooms(t_room *rooms);
 void free_farm(t_farm *farm);
+void free_paths(t_path **paths, int path_count);
 void free_path(t_path *path);
 void free_ants(t_ant *ants);
 

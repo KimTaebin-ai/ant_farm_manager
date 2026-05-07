@@ -6,7 +6,7 @@
 /*   By: taebkim <taebkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 17:37:35 by taebkim           #+#    #+#             */
-/*   Updated: 2026/05/05 19:56:08 by taebkim          ###   ########.fr       */
+/*   Updated: 2026/05/07 21:05:55 by taebkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_path {
     t_room **rooms;    // 경로 상의 방 배열
     int length;        // 경로 길이 (방 개수)
     int assigned_ants; // 이 경로에 할당된 개미 수 (나중에 쓸 것)
-}   t_path;
+} t_path;
 
 typedef struct s_ant {
     int id;
